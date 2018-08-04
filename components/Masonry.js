@@ -17,7 +17,7 @@ export const assignObjectColumn = (nColumns, index, targetObject) => ({...target
 export const assignObjectIndex = (index, targetObject) => ({...targetObject, ...{ index }});
 
 // containMatchingUris :: ([brick], [brick]) -> Bool
-const containMatchingUris = (r1, r2) => isEqual(r1.map(brick => brick.uri), r2.map(brick => brick.uri));
+const containMatchingUris = () => false;
 
 export default class Masonry extends Component {
 	static propTypes = {
