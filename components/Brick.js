@@ -27,6 +27,9 @@ export function _getImageTag (props, gutter = 0) {
 		data: {
 			...props.data
 		},
+		item: {
+			...props.item
+		},
 		resizeMethod: 'auto',
 		style: {
 			width: props.width,
@@ -47,10 +50,18 @@ export function _getImageTag (props, gutter = 0) {
 
 // _getTouchableUnit :: Image, Number -> TouchableTag
 export function _getTouchableUnit (image, gutter = 0) {
+	const touchableProps = {
+		key: image.uri
+	}
+
+	if (image.onPress) {
+		touchableProps.onPress = () => image.onPress(image.data)
+	}
+
 	return (
 		<TouchableHighlight
-          key={image.uri}
-          onPress={() => image.onPress(image.data)}>
+          {...touchableProps}
+    >
           <View>
             { _getImageTag(image, gutter) }
           </View>
